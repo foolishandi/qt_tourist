@@ -15,10 +15,14 @@ find_package(Qt5 COMPONENTS
         Gui
         Widgets
         REQUIRED)
+find_package(Qt5Widgets REQUIRED QUIET)
+
 add_executable(qt_test main.cpp
-        test/my_widget.cpp
+        source/my_widget.cpp
         utils/common_utils.cpp
         resource/images.qrc resource/qss.qrc
+        source/1/1.qrc
+        source/1/test_ui.h
 )
 target_link_libraries(qt_test
         Qt5::Core
