@@ -21,8 +21,8 @@ add_executable(qt_test main.cpp
         source/my_widget.cpp
         utils/common_utils.cpp
         resource/images.qrc resource/qss.qrc
-        source/1/1.qrc
-        source/1/test_ui.h
+        source/qt_ui_test/1.qrc
+        source/qt_ui_test/test_ui.h
 )
 target_link_libraries(qt_test
         Qt5::Core

@@ -1,7 +1,7 @@
 /********************************************************************************
-** Form generated from reading UI file '1.ui'
+** Form generated from reading UI file 'qt_ui_test.ui'
 **
-** Created by: Qt User Interface Compiler version 5.14.1
+** Created by: Qt User Interface Compiler version 5.14.qt_ui_test
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -49,7 +49,7 @@ public:
         groupBox->setGeometry(QRect(20, 130, 120, 80));
         groupBox->setAcceptDrops(true);
         groupBox->setStyleSheet(QString::fromUtf8("color:red;\n"
-"border-image: url(:/t/1.png);"));
+"border-image: url(:/t/qt_ui_test.png);"));
         spinBox = new QSpinBox(Form);
         spinBox->setObjectName(QString::fromUtf8("spinBox"));
         spinBox->setGeometry(QRect(60, 240, 42, 22));

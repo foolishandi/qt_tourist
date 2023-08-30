@@ -16,11 +16,11 @@ void CommonUtils::loadQss() {
 
             foreach (QString name, qssFileNames) {
 //                中文乱码问题
-            qDebug() << QStringLiteral("=> 加载 QSS 文件 %1").arg(name);
+            qDebug() << QStringLiteral("=> 加载 QSS 文件 %qt_ui_test").arg(name);
 
             QFile file(name);
             if (!file.open(QIODevice::ReadOnly)) {
-                qDebug() << QStringLiteral("打开 QSS 文件 %1 失败").arg(name);
+                qDebug() << QStringLiteral("打开 QSS 文件 %qt_ui_test 失败").arg(name);
                 continue;
             }
 

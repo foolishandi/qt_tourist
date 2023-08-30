@@ -7,7 +7,7 @@
 ## 2 、 静态编译文件使用方式
 1) 见主目录CmakeLists.txt
 ```c++
-set(CMAKE_PREFIX_PATH ".../qt-opensource-windows-x86-5.14.1/qt-opensource-windows-x86-5.14.1/5.14.1/msvc2017")
+set(CMAKE_PREFIX_PATH ".../qt-opensource-windows-x86-5.14.qt_ui_test/qt-opensource-windows-x86-5.14.qt_ui_test/5.14.qt_ui_test/msvc2017")
 ```
 2) clion配置编译器
 

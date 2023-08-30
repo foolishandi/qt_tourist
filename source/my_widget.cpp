@@ -3,9 +3,9 @@
 //
 #include <iostream>
 #include "my_widget.h"
-#include "1/test_ui.h"
+#include "qt_ui_test/test_ui.h"
 
-MyWidget::MyWidget(QWidget *parent) : QWidget(parent), content_(""), test_("测试关闭") {
+MyWidget::MyWidget(QWidget *parent) : QWidget(parent), content_(""), test_("测试ui弹窗") {
     initUi();
     initBind();
 }
