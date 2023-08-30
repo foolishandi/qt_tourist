@@ -82,4 +82,12 @@ qquickWidget_->setResizeMode(QQuickWidget::SizeRootObjectToView);
 qquickWidget_->setSource(source);
 ```
 5)预览qml文件
->在根目录tool文件夹内点击qmlscene.exe，选择对应的qml文件
+>*a.在根目录tool文件夹内点击qmlscene.exe，选择对应的qml文件*
+> 
+>*b.快速预览  配置外部工具*
+![qml快捷](./example/qml快捷.png)
+> 
+>*c.配置快捷键*
+![qml快捷键](./example/qml快捷键.png)
+> 
+>*d.在编辑qml时直接按shift+q即可实时看到qt界面*

@@ -9,15 +9,12 @@ Item {
     visible: true
     width: 736
     height: 290
-    //    color: "#00000000"
-    //    modality: Qt.WindowModal
-    //    flags: Qt.Dialog | Qt.FramelessWindowHint | Qt.WindowSystemMenuHint
 
     signal sliderMoved(real v);
     signal playClicked();
     signal pauseClicked();
     signal updatePlayProgress(real v);
-    property string  title: qsTr("《一起来听红楼梦》")
+    property string  title: qsTr("《一起来听红楼梦》2")
     property var totalTimeValue: 20000
     property var curTimeValue : 100
 
