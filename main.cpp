@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 
     QApplication app(argc, argv);
     MyWidget test;
-    test.setFixedSize(800,400);
+    test.setFixedHeight(400);
     test.show();
     // 加载样式文件
     qInfo() << "qss";

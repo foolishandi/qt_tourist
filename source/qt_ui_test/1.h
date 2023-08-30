@@ -49,7 +49,7 @@ public:
         groupBox->setGeometry(QRect(20, 130, 120, 80));
         groupBox->setAcceptDrops(true);
         groupBox->setStyleSheet(QString::fromUtf8("color:red;\n"
-"border-image: url(:/t/qt_ui_test.png);"));
+"border-image: url(:/resource/images/1.png);"));
         spinBox = new QSpinBox(Form);
         spinBox->setObjectName(QString::fromUtf8("spinBox"));
         spinBox->setGeometry(QRect(60, 240, 42, 22));
