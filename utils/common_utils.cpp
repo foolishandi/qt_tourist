@@ -32,3 +32,15 @@ void CommonUtils::loadQss() {
         qApp->setStyleSheet(qss);
     }
 }
+
+QString CommonUtils::getImagesPath(QString imageName) {
+    return QString(":/resource/images/%1").arg(imageName);
+}
+
+QString CommonUtils::getQmlPath(QString qmlName) {
+    return QString("qrc:/resource/qml/%1").arg(qmlName);
+}
+
+QString CommonUtils::getQssPath(QString qssName) {
+    return QString(":/resource/images/%1").arg(qssName);
+}

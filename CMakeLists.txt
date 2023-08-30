@@ -2,11 +2,24 @@ cmake_minimum_required(VERSION 3.26)
 project(qt_test)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 # qt文件
 set(CMAKE_PREFIX_PATH "F:/BaiduNetdiskDownload/qt-opensource-windows-x86-5.14.1/qt-opensource-windows-x86-5.14.1/5.14.1/msvc2017")
+
+add_executable(qt_test main.cpp
+        source/my_widget.cpp
+        utils/common_utils.cpp
+        resource/images.qrc resource/qss.qrc resource/qml.qrc
+        source/qt_ui_test/test_ui.h
+        source/qt_qml_test/qml_test.cpp
+        source/qt_qml_test/qml_test.h
+        source/qt_qml_test/qml_test.h
+)
+
 #然后查找
 find_package(Qt5 COMPONENTS Widgets Network LinguistTools)
 
@@ -14,19 +27,15 @@ find_package(Qt5 COMPONENTS
         Core
         Gui
         Widgets
+        Quick
+        QuickWidgets
         REQUIRED)
-find_package(Qt5Widgets REQUIRED QUIET)
-
-add_executable(qt_test main.cpp
-        source/my_widget.cpp
-        utils/common_utils.cpp
-        resource/images.qrc resource/qss.qrc
-        source/qt_ui_test/test_ui.h
-)
 target_link_libraries(qt_test
         Qt5::Core
         Qt5::Gui
         Qt5::Widgets
+        Qt5::Quick
+        Qt5::QuickWidgets
 )
 #窗口设置, DeBug时FALSE,可查看cout输出，Release时，会多出黑窗体
 #set(useWin32 FALSE)

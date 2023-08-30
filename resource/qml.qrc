@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/resource">
+        <file>qml/test0.qml</file>
+        <file>qml/listen.qml</file>
+    </qresource>
+</RCC>

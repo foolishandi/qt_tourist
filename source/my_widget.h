@@ -22,8 +22,9 @@ private:
 
     void initBind();
     QLabel content_;
-    QHBoxLayout layout_;
+    QVBoxLayout layout_;
     QPushButton test_;
+    QPushButton qmlTest_;
 };
 
 
