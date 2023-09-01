@@ -20,7 +20,7 @@ add_executable(qt_test main.cpp
         source/qt_html/core.cpp
         source/qt_html/worker.cpp
         resource/images.qrc resource/qss.qrc resource/qml.qrc resource/html.qrc
-
+        resource/src/react/app/build/build.qrc
 )
 
 #然后查找

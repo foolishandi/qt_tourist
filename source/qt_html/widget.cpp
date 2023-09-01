@@ -17,8 +17,8 @@ WidgetDialog::WidgetDialog(QWidget *parent)
     qWebEngineView_->page()->setWebChannel(channel);
 
 //    加载页面
-//    qWebEngineView_->load(QUrl(CommonUtils::getHtmlPath("html/index.html")));
-    qWebEngineView_->load(QUrl("https://www.baidu.com"));
+    qWebEngineView_->load(QUrl("qrc:/index.html"));
+//    qWebEngineView_->load(QUrl("https://www.baidu.com"));
     layout->addWidget(qWebEngineView_);
     setLayout(layout);
 }
