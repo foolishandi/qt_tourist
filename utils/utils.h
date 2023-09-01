@@ -2,8 +2,8 @@
 // Created by Administrator on 2023/8/27.
 //
 
-#ifndef QT_TEST_COMMON_UTILS_H
-#define QT_TEST_COMMON_UTILS_H
+#ifndef QT_TEST_UTILS_H
+#define QT_TEST_UTILS_H
 
 
 #include <QString>
@@ -14,7 +14,8 @@ public:
     static QString getImagesPath(QString imageName);
     static QString getQmlPath(QString qmlName);
     static QString getQssPath(QString qssName);
+    static QString getHtmlPath(QString htmlName);
 };
 
 
-#endif //QT_TEST_COMMON_UTILS_H
+#endif //QT_TEST_UTILS_H

@@ -5,8 +5,11 @@
 #include "my_widget.h"
 #include "qt_ui_test/test_ui.h"
 #include "qt_qml_test/qml_test.h"
-#include "../utils/common_utils.h"
-MyWidget::MyWidget(QWidget *parent) : QWidget(parent), content_(""), test_("测试ui弹窗"), qmlTest_{"qml dialog test"} {
+#include "../utils/utils.h"
+#include "qt_html/widget.h"
+
+MyWidget::MyWidget(QWidget *parent) : QWidget(parent), content_(""), test_("测试ui弹窗"), qmlTest_{"qml dialog test"},
+                                      htmlTest_("html test") {
     initUi();
     initBind();
 }
@@ -32,7 +35,12 @@ void MyWidget::initUi() {
         auto qmlDialog = new QmlTEST(this);
         qmlDialog->show();
     });
-
+// html 测试
+    layout_.addWidget(&htmlTest_);
+    connect(&htmlTest_, &QPushButton::clicked, this, [this] {
+        WidgetDialog *dialog=new WidgetDialog();
+        dialog->showNow();
+    });
     setLayout(&layout_);
 
 }

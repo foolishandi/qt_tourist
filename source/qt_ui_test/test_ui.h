@@ -1,7 +1,7 @@
 //
 // Created by Administrator on 2023/8/28.
 //
-
+#pragma warning (disable:4819)
 #ifndef QT_TEST_TEST_UI_H
 #define QT_TEST_TEST_UI_H
 #include "1.h"   //必须添加 "ui_类名.h" 头文件

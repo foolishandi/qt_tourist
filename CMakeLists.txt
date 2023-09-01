@@ -12,12 +12,15 @@ set(CMAKE_PREFIX_PATH "F:/BaiduNetdiskDownload/qt-opensource-windows-x86-5.14.1/
 
 add_executable(qt_test main.cpp
         source/my_widget.cpp
-        utils/common_utils.cpp
-        resource/images.qrc resource/qss.qrc resource/qml.qrc
+        utils/utils.cpp
         source/qt_ui_test/test_ui.h
         source/qt_qml_test/qml_test.cpp
-        source/qt_qml_test/qml_test.h
-        source/qt_qml_test/qml_test.h
+        source/qt_html/widget.cpp
+        source/qt_html/common.cpp
+        source/qt_html/core.cpp
+        source/qt_html/worker.cpp
+        resource/images.qrc resource/qss.qrc resource/qml.qrc resource/html.qrc
+
 )
 
 #然后查找
@@ -29,6 +32,8 @@ find_package(Qt5 COMPONENTS
         Widgets
         Quick
         QuickWidgets
+        WebEngineWidgets
+        WebChannel
         REQUIRED)
 target_link_libraries(qt_test
         Qt5::Core
@@ -36,6 +41,8 @@ target_link_libraries(qt_test
         Qt5::Widgets
         Qt5::Quick
         Qt5::QuickWidgets
+        Qt5::WebEngineWidgets
+        Qt5::WebChannel
 )
 #窗口设置, DeBug时FALSE,可查看cout输出，Release时，会多出黑窗体
 #set(useWin32 FALSE)

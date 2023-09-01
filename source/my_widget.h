@@ -10,6 +10,8 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QDebug>
+#include "qt_html/widget.h"
+
 class MyWidget : public QWidget {
 Q_OBJECT
 public:
@@ -25,6 +27,7 @@ private:
     QVBoxLayout layout_;
     QPushButton test_;
     QPushButton qmlTest_;
+    QPushButton htmlTest_;
 };
 
 

@@ -6,7 +6,7 @@
 #include <QStringList>
 #include <QDebug>
 #include <QApplication>
-#include "common_utils.h"
+#include "utils.h"
 
 void CommonUtils::loadQss() {
 // 从配置中读取 QSS 的文件名，QSS 可以分类放在多个文件里
@@ -43,4 +43,8 @@ QString CommonUtils::getQmlPath(QString qmlName) {
 
 QString CommonUtils::getQssPath(QString qssName) {
     return QString(":/resource/images/%1").arg(qssName);
+}
+
+QString CommonUtils::getHtmlPath(QString htmlName) {
+    return QString("qrc:/resource/src/%1").arg(htmlName);
 }

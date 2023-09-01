@@ -7,3 +7,8 @@ QWidget#MyWidget{
 #test{
     color:red;
 }
+
+#WidgetDialog{
+    min-height:500px;
+    min-width:1000px;
+}

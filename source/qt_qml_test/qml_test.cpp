@@ -2,7 +2,7 @@
 #include<QQuickWidget>
 #include<QQuickItem>
 #include<QTimer>
-#include "../../utils/common_utils.h"
+#include "../../utils/utils.h"
 QmlTEST::QmlTEST(QWidget *parent)
         : QDialog(parent) {
     setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
