@@ -91,3 +91,73 @@ qquickWidget_->setSource(source);
 ![qml快捷键](./example/qml快捷键.png)
 > 
 >*d.在编辑qml时直接按shift+q即可实时看到qt界面*
+
+## (4)加载react文件
+>1>qt配置相关
+- cmake添加配置
+```c++
+find_package(Qt5 COMPONENTS Widgets Network LinguistTools)
+
+find_package(Qt5 COMPONENTS
+        Core
+        Gui
+        Widgets
+        WebEngineWidgets
+        WebChannel
+        REQUIRED)
+target_link_libraries(qt_test
+        Qt5::Core
+        Qt5::Gui
+        Qt5::Widgets
+        Qt5::WebEngineWidgets
+        Qt5::WebChannel
+)
+```
+- 若构建失败需配置：
+```c++
+  (1) Resources 配置
+  将Qt对应版本下的Resources的拷贝到 自己库下的 Resources 目录
+```
+```c++
+icudtl.dat
+qtwebengine_devtools_resources.pak
+qtwebengine_resources.pak
+qtwebengine_resources_100p.pak
+qtwebengine_resources_200p.pak
+```
+```c++
+(2) translations 配置
+将Qt对应版本下的translations 的 拷贝到 自己库下的 translations 目录
+(3) QtWebEngineProcess.exe 配置
+将Qt对应版本下的QtWebEngineProcess.exe 的 拷贝到 自己库下
+(4) plugins 配置
+将Qt对应版本下的plugins 的 拷贝到 自己库下plugins 目录
+(5) qt.conf 文件配置
+将Qt对应版本下的qt.conf的 拷贝到 自己库下,并更改 qt.conf 如下
+```
+```c++
+[Paths]
+Plugins = ./plugins
+Resources = ./Resources
+translations = ./translations
+```
+- 最简单的QT 添加代码
+```c++
+QWebEngineView *view = new QWebEngineView(parent);
+view->load(QUrl("https://www.csdn.net/"));
+view->show();
+```
+>2>react等web前端配置相关
+- 写好前端项目文件，利用build命令生成打包文件
+- 利用本项目根目录下的tool内的qrc.exe生成qrc文件，并引入qrc文件
+```c++
+./qrc.exe xxx  //xxx即为对应的build文件夹
+```
+- 引入index.html的时候注意引入地址
+
+a.因为react打包时用的相对地址,因此最好把qrc的前缀地址去掉
+
+b.或者同时修改react打包的output地址，添加前缀
+```c++
+view->load(QUrl("qrc:/index.html"));
+```
