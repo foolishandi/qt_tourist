@@ -1,0 +1,14 @@
+QWidget#MainWidget{
+    min-width:300px;
+    max-width:300px;
+    min-height:100px;
+}
+
+#test{
+    color:red;
+}
+
+#WidgetDialog{
+    min-height:500px;
+    min-width:1000px;
+}
