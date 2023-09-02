@@ -149,7 +149,7 @@ view->show();
 ```
 >2>react等web前端配置相关
 - 写好前端项目文件，利用build命令生成打包文件
-- 利用本项目根目录下的tool内的qrc.exe生成qrc文件，并引入qrc文件
+- cmd,利用本项目根目录下的tool内的qrc.exe生成qrc文件，并引入qrc文件
 ```c++
 ./qrc.exe xxx  //xxx即为对应的build文件夹
 ```
@@ -161,3 +161,14 @@ b.或者同时修改react打包的output地址，添加前缀
 ```c++
 view->load(QUrl("qrc:/index.html"));
 ```
+
+## (5)简易打包软件
+- release build构建
+- 将生成的xxx.exe单独复制到一个空的文件夹
+- cmd,利用本项目根目录下的tool内的windeployqt.exe找出xxx.exe所需的所有动态库（需要qt环境，是全量动态库引入，包含不需要的）
+```c++
+./windeployqt.exe xxx.exe
+```
+- 利用本项目根目录下的tool内的Inno Setup v6.2.0.exe，按照向导生成整个文件夹的压缩可执行文件
+
+- [使用教程](https://blog.csdn.net/jg_csdn/article/details/124693110?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169361655316800186544935%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169361655316800186544935&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-124693110-null-null.142^v93^insert_down28v1&utm_term=inno%20setup&spm=1018.2226.3001.4187)
