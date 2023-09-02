@@ -1,51 +1,86 @@
 cmake_minimum_required(VERSION 3.26)
 project(qt_test)
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+#MSVC 发布添加debug信息
+if (MSVC)
+    set(CMAKE_CXX_FLAGS_RELEASE "-Od -Zi -MD")
+    set(CMAKE_EXE_LINKER_FLAGS_RELEASE "/INCREMENTAL:NO /DEBUG")
+endif (MSVC)
+#check assert
+if (CMAKE_BUILD_TYPE MATCHES "Debug" OR QT_FORCE_ASSERTS)
+    message(INFO, "open assert -> ${CMAKE_BUILD_TYPE}${QT_FORCE_ASSERTS}")
+ELSE ()
+    message(INFO, "close assert -> ${CMAKE_BUILD_TYPE}${QT_FORCE_ASSERTS}")
+    add_definitions(-DNDEBUG)
+endif ()
+
+# 目录拆分
+set(TARGET_UTILS utilsPlugin)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+#
+#输出目录
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
+# qt 配置
+set(CMAKE_PREFIX_PATH "F:/BaiduNetdiskDownload/qt-opensource-windows-x86-5.14.1/qt-opensource-windows-x86-5.14.1/5.14.1/msvc2017")
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-# qt文件
-set(CMAKE_PREFIX_PATH "F:/BaiduNetdiskDownload/qt-opensource-windows-x86-5.14.1/qt-opensource-windows-x86-5.14.1/5.14.1/msvc2017")
 
-add_executable(qt_test main.cpp
-        source/my_widget.cpp
-        utils/utils.cpp
-        source/qt_ui_test/test_ui.h
-        source/qt_qml_test/qml_test.cpp
-        source/qt_html/widget.cpp
-        source/qt_html/common.cpp
-        source/qt_html/core.cpp
-        source/qt_html/worker.cpp
-        resource/images.qrc resource/qss.qrc resource/qml.qrc resource/html.qrc
-        resource/src/react/app/build/build.qrc
-)
-
-#然后查找
-find_package(Qt5 COMPONENTS Widgets Network LinguistTools)
-
-find_package(Qt5 COMPONENTS
-        Core
+set(QT_LIBS Core
         Gui
         Widgets
+        Network
         Quick
         QuickWidgets
         WebEngineWidgets
         WebChannel
-        REQUIRED)
-target_link_libraries(qt_test
-        Qt5::Core
+        WebSockets
+        Multimedia
+        Xml
+        Svg)
+set(QT_LIBS_LINK Qt5::Core
         Qt5::Gui
         Qt5::Widgets
+        Qt5::Network
         Qt5::Quick
         Qt5::QuickWidgets
         Qt5::WebEngineWidgets
         Qt5::WebChannel
-)
-#窗口设置, DeBug时FALSE,可查看cout输出，Release时，会多出黑窗体
-#set(useWin32 FALSE)
+        Qt5::WebSockets
+        Qt5::Multimedia
+        Qt5::Xml
+        Qt5::Svg)
+find_package(Qt5 COMPONENTS ${QT_LIBS})
+find_package(QT5 COMPONENTS ${QT_LIBS} REQUIRED)
+add_definitions(-DQT_MESSAGELOGCONTEXT)
+if (${QY_FORCE_ASSERTS})
+    add_definitions(-DQT_FORCE_ASSERTS)
+endif ()
+
+#资源文件
+include_directories(source)
+include_directories(utils)
+add_executable(${PROJECT_NAME} WIN32 "")
+
+set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "test")
+
+target_sources(${PROJECT_NAME} PRIVATE "")
+
+add_subdirectory(source)
+add_subdirectory(utils)
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${PROJECT_SOURCE_DIR})
+target_compile_definitions(${PROJECT_NAME} PRIVATE BUILD_IMPORT)
+
+target_link_libraries(${PROJECT_NAME} ${QT_LIBS_LINK})
+
 #
 if (WIN32 AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
     set(DEBUG_SUFFIX)
@@ -75,3 +110,5 @@ if (WIN32 AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
                 "$<TARGET_FILE_DIR:${PROJECT_NAME}>")
     endforeach (QT_LIB)
 endif ()
+
+

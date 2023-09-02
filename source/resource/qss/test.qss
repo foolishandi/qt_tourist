@@ -1,4 +1,4 @@
-QWidget#MyWidget{
+QWidget#MainWidget{
     min-width:300px;
     max-width:300px;
     min-height:100px;
